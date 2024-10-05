@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Optimization</title>
+</head>
+<body>
+    <h1>Pricing Optimization</h1>
+    <form method="POST" action="/predict">
+        <label for="price">Base Price:</label>
+        <input type="number" step="0.01" name="price" required>
+        
+        <label for="competitor_price">Competitor Price:</label>
+        <input type="number" step="0.01" name="competitor_price" required>
+        
+        <label for="customer_ratings">Customer Ratings:</label>
+        <input type="number" step="0.1" name="customer_ratings" required>
+        
+        <label for="marketing_spend">Marketing Spend:</label>
+        <input type="number" step="0.01" name="marketing_spend" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if prediction %}
+    <h2>Predicted Demand: {{ prediction }}</h2>
+    {% endif %}
+    
+    {% if optimal_price %}
+    <h2>Optimal Price: {{ optimal_price }}</h2>
+    {% endif %}
+</body>
+</html>
